@@ -5,10 +5,12 @@ function LoginTest() {
 
   const signOutRedirect = () => {
     const clientId = "2cbc1hd3l8hm3js05j18t3f8ok";
-    const logoutUri = "http://localhost:5173";
+    const logoutUri = "https://d3uvuh49ai1mxv.cloudfront.net/";
     const cognitoDomain =
       "https://eu-north-1ijyxtz6jm.auth.eu-north-1.amazoncognito.com";
-    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(
+      logoutUri
+    )}`;
   };
 
   if (auth.isLoading) {
