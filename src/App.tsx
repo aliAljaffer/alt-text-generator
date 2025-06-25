@@ -54,7 +54,7 @@ export default function App() {
         formData.append("contentType", selectedFile.type);
 
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+        const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
 
         const res = await fetch(UPLOAD_ENDPOINT, {
           method: "POST",
