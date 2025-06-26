@@ -54,7 +54,7 @@ export default function App() {
         formData.append("contentType", selectedFile.type);
 
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
+        const timeoutId = setTimeout(() => controller.abort(), 120000); // 120s timeout
 
         const res = await fetch(UPLOAD_ENDPOINT, {
           method: "POST",
@@ -70,7 +70,12 @@ export default function App() {
         clearTimeout(timeoutId);
         if (!res.ok) {
           const errorData = await res.json().catch(() => ({}));
-          setError(errorData.message || `Upload failed: ${res.status}`);
+          if ((errorData.message as string).includes("Service Unavailable"))
+            setError(
+              errorData.message +
+                " (Probably due to cold-start taking too long. Try again in a minute or two!)"
+            );
+          else setError(errorData.message || `Upload failed: ${res.status}`);
           return;
         }
         const result = await res
