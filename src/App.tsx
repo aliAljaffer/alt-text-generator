@@ -132,7 +132,7 @@ export default function App() {
           <p className="text-gray-500 text-xs">
             Your images are processed securely and never stored permanently.
             <br />
-            All images are discarded from storage 1 hour after processing.
+            All images are discarded from storage 1 day after processing.
           </p>
         </div>
       </div>
